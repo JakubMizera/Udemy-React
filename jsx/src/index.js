@@ -16,7 +16,14 @@ const App = () => {
     const inputType = 'number';
     const minValue = 5;
 
-    return <input type={inputType} min={minValue} style={{border: '1px solid red'}}/>;
+    return (
+    <>
+        <input type={inputType} min={minValue} style={{border: '1px solid red'}}/>
+        <textarea autoFocus={true}/>
+        {/* spellCheck is automatically set to true*/}
+        <input maxLength={5} spellCheck style={{backgroundColor: 'gray'}}/>
+    </>
+    );
 }
 
 // 5) Show component on a screen

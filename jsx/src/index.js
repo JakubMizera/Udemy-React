@@ -4,14 +4,19 @@ import ReactDOM from 'react-dom/client' //Library that knows how to show a compo
 
 // 2) Get a refrence to the div with ID root
 const el = document.getElementById('root');
-console.log(el)
 
 // 3) Tell React to take control of that element
 const root = ReactDOM.createRoot(el);
 
 // 4) Create a component
 const App = () => {
-    return <h1>Hello there!</h1>;
+    //React cannot print objects
+
+    //JSX props
+    const inputType = 'number';
+    const minValue = 5;
+
+    return <input type={inputType} min={minValue} style={{border: '1px solid red'}}/>;
 }
 
 // 5) Show component on a screen

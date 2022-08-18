@@ -4,7 +4,7 @@ import faker from "faker";
 
 import CommentDetail from './CommentDetail';
 import ApprovalCard from './ApprovalCard';
-import App from './style/App.css'
+import './style/AppStyle.css'
 
 const el = document.getElementById('root');
 const root = ReactDOM.createRoot(el);

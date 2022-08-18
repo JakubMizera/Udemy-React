@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import SeasonDisplay from './SeasonDisplay';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -44,7 +45,8 @@ class App extends React.Component {
     }
 
     if (this.state.lat && !this.state.errorMessage) {
-      return <div>Latitude: {this.state.lat}</div>
+      //passing props to SeasonDisplay
+      return <SeasonDisplay lat={this.state.lat} />
     }
 
     return <div>Loading, please wait</div>

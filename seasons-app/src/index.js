@@ -16,14 +16,18 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // }
 
 class App extends React.Component {
-  //constructor is going to be called anytime an instance of this class is created
-  constructor(props) {
-    // super(props) is required everytime for constructor
-    super(props);
+  // //constructor is going to be called anytime an instance of this class is created
+  // constructor(props) {
+  //   // super(props) is required everytime for constructor
+  //   super(props);
 
-    //this is the only time we do direct assignment to this.state
-    this.state = { lat: null, errorMessage: '' };
-  }
+  //   //this is the only time we do direct assignment to this.state
+  //   this.state = { lat: null, errorMessage: '' };
+  // }
+
+
+  // using state = {} instead of constructor, works the same
+  state = { lat: null, errorMessage: '' };
 
   componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(

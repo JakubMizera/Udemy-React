@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import SeasonDisplay from './SeasonDisplay';
+import Loader from './Loader';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -38,8 +39,8 @@ class App extends React.Component {
     );
   }
 
-  // !React requires to define render in Class based components!
-  render() {
+  //helper method
+  renderContent() {
     if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>
     }
@@ -49,7 +50,16 @@ class App extends React.Component {
       return <SeasonDisplay lat={this.state.lat} />
     }
 
-    return <div>Loading, please wait</div>
+    return <Loader message='Please accept location request' />
+  }
+
+  // !React requires to define render in Class based components!
+  render() {
+    return (
+      <div className='border red'>
+        {this.renderContent()}
+      </div>
+    )
   }
 }
 

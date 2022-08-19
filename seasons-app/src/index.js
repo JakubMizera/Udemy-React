@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import SeasonDisplay from './SeasonDisplay';
 import Loader from './Loader';
+import ErrorDisplay from './ErrorDisplay';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -42,7 +43,7 @@ class App extends React.Component {
   //helper method
   renderContent() {
     if (this.state.errorMessage && !this.state.lat) {
-      return <div>Error: {this.state.errorMessage}</div>
+      return <ErrorDisplay errorMessage='You denied access to your location' />
     }
 
     if (this.state.lat && !this.state.errorMessage) {
@@ -56,9 +57,7 @@ class App extends React.Component {
   // !React requires to define render in Class based components!
   render() {
     return (
-      <div className='border red'>
-        {this.renderContent()}
-      </div>
+      <>{this.renderContent()}</>
     )
   }
 }

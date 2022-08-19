@@ -1,4 +1,4 @@
-import './SeasonDisplay.css'
+import './style/SeasonDisplay.css'
 import React from "react";
 
 const seasonConfig = {

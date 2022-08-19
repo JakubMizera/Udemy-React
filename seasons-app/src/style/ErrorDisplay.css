@@ -1,0 +1,12 @@
+.error-display {
+    background-color: rgb(25, 23, 23);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-display > h1 {
+    color: white;
+    padding: 10px;
+}

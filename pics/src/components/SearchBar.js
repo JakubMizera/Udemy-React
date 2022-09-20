@@ -6,8 +6,10 @@ class SearchBar extends React.Component {
     //Use arrow function to bind keyword 'this'
     onFormSubmit = (event) => {
         event.preventDefault();
-        console.log(this.state.term)
-    }
+        //when calling props in class based components use this.props
+        this.props.appSubmit(this.state.term);
+        //this.props.appSubmit(this.state.term) sends info up to the App component
+    };
 
     render() {
         return (

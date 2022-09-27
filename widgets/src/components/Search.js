@@ -6,7 +6,6 @@ const Search = () => {
     const [results, setResults] = useState([]);
     console.log(results);
 
-
     useEffect(() => {
         const searchWiki = async () => {
             const result = await axios.get('https://en.wikipedia.org/w/api.php', {
@@ -29,6 +28,22 @@ const Search = () => {
     // 'empty' => Run at initial render and after every rerender
     // [data] => Run at initial render and after every rerender if data has changed since last render
 
+
+
+    const renderedResults = results.map((result) => {
+        return (
+            <div key={result.pageid} className='item'>
+                <div className='content'>
+                    <div className='header'>
+                        {result.title}
+                    </div>
+                    {result.snippet}
+                </div>
+            </div>
+        )
+    });
+
+
     return (
         <div>
             <div className='ui form'>
@@ -40,6 +55,9 @@ const Search = () => {
                         onChange={(e) => setTerm(e.target.value)}
                     ></input>
                 </div>
+            </div>
+            <div className='ui celled list'>
+                {renderedResults}
             </div>
         </div>
     );

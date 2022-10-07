@@ -4,7 +4,7 @@ import axios from 'axios';
 const Search = () => {
     const [term, setTerm] = useState('');
     const [results, setResults] = useState([]);
-    console.log(results);
+    //console.log(results);
 
     useEffect(() => {
         const searchWiki = async () => {
@@ -17,11 +17,20 @@ const Search = () => {
                     srsearch: term,
                 }
             });
+
             setResults(result.data.query.search);
         }
-        if (term !== '') {
-            searchWiki();
-        }
+        const timeoutId = setTimeout(() => {
+            if (term !== '') {
+                searchWiki();
+            }
+        }, 500);
+
+        //returning a cleanup function
+        return () => {
+            clearTimeout(timeoutId);
+            //console.log(`I cleaned timeout with id of ${timeoutId}`);
+        };
     }, [term]);
     //!useEffect 2nd argument can only be: [], 'empty', [some data]!
     // [] => Run at initial render
@@ -33,12 +42,20 @@ const Search = () => {
     const renderedResults = results.map((result) => {
         return (
             <div key={result.pageid} className='item'>
+                <div className='right floated content'>
+                    <a
+                        className='ui button'
+                        href={`https://en.wikipedia.org?curid=${result.pageid}`}
+                    >
+                        Go
+                    </a>
+                </div>
                 <div className='content'>
                     <div className='header'>
                         {result.title}
                     </div>
                     {/* use it only if you trust API */}
-                    <span dangerouslySetInnerHTML={{ __html: result.snippet}}></span>
+                    <span dangerouslySetInnerHTML={{ __html: result.snippet }}></span>
                     {/* {result.snippet} */}
                 </div>
             </div>

@@ -1,7 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const Dropdown = ({ options, selected, onSelectedChange }) => {
     const [open, setOpen] = useState(false);
+    const ref = useRef();
+
+    useEffect(() => {
+        document.body.addEventListener('click', (event) => {
+            //check if element that is click on is inside of component
+            if (ref.current.contains(event.target)) {
+                return;
+            }
+
+            setOpen(false);
+        }, { capture: true })
+    }, []);
+    //useEffect with empty array as 2nd argument will only render once
 
     const renderOptions = options.map((option) => {
         //don't render selected option
@@ -23,12 +36,15 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
         );
     });
 
+
     return (
-        <div className='ui form'>
+        <div ref={ref} className='ui form'>
             <div className='field'>
                 <label className='label'>Select a Color</label>
                 <div
-                    onClick={() => { setOpen(!open) }}
+                    onClick={() => {
+                        setOpen(!open)
+                    }}
                     className={`ui selection dropdown ${open ? 'visible active' : ''}`}
                 >
                     <i className='dropdown icon'></i>

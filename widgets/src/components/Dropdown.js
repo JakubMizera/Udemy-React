@@ -5,14 +5,20 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
     const ref = useRef();
 
     useEffect(() => {
-        document.body.addEventListener('click', (event) => {
+        const onBodyClick = (event) => {
             //check if element that is click on is inside of component
             if (ref.current.contains(event.target)) {
                 return;
             }
-
             setOpen(false);
-        }, { capture: true })
+        }
+
+        document.body.addEventListener('click', onBodyClick, { capture: true })
+
+        //Cleaning up addEventListner if the component is not used
+        return () => {
+            document.body.removeEventListener('click', onBodyClick, { capture: true });
+        };
     }, []);
     //useEffect with empty array as 2nd argument will only render once
 

@@ -11,7 +11,7 @@ export const items = [
         title: 'How do you use React?',
         content: 'You use React by creating components'
     }
-]
+];
 
 export const options = [
     {
@@ -26,4 +26,23 @@ export const options = [
         label: 'A shade of blue',
         value: 'blue',
     },
-]
+];
+
+export const langOptions = [
+    {
+        label: 'Afrikaans',
+        value: 'af',
+    },
+    {
+        label: 'Arabic',
+        value: 'ar',
+    },
+    {
+        label: 'Hindi',
+        value: 'hi',
+    },
+    {
+        label: 'Polish',
+        value: 'pl',
+    }
+];

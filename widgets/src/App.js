@@ -14,12 +14,12 @@ export default () => {
 
     return (
         <Router>
-            <>
-                <Link to='/'>Accordion</Link>
-                <Link to='/search'>Search</Link>
-                <Link to='/dropdown'>Dropdown</Link>
-                <Link to='/translate'>Translate</Link>
-            </>
+            <nav className='ui secondary pointing menu'>
+                <Link className='item' to='/'>Accordion</Link>
+                <Link className='item' to='/search'>Search</Link>
+                <Link className='item' to='/dropdown'>Dropdown</Link>
+                <Link className='item' to='/translate'>Translate</Link>
+            </nav>
             <Routes>
                 <Route index element={<Accordion items={items} />} />
                 <Route path='search' element={<Search />} />

@@ -38,4 +38,5 @@ const mapStateToProps = (state) => {
 
 // Passing action creator (selectSong) to connect component,
 // we wrap it in dispatch function which updates the redux state
+// ES2015;  {selectedSong: selectedSong} is shorten to {selectedSong}
 export default connect(mapStateToProps, { selectSong })(SongList);
